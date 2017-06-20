@@ -1,0 +1,20 @@
+<ion-view view-title="Despesas" ng-controller="NovoLancamentoController">
+	<ion-content class="padding" style="top:100px">
+		<div class="list">
+		  <div class="item item-input-inset">
+		    <label class="item-input-wrapper">
+		    	<input type="search" ng-model="contas.filtro" placeholder="Nome da conta">
+		    </label>
+	    	<button class="icon ion-ios-search placeholder-icon"  ng-click="filtrarContas('D')"></button>
+		   </div>
+		</div> 	
+		 <ion-list>
+		      <ion-item ng-repeat="conta in contas.listaDespesasFiltradas">
+		    		<p on-hold="preencherFormGeracaoLancamentos({{conta.id}}, '{{conta.descricao}}')">{{conta.descricao}}</p>
+				    <ion-option-button class="ion-navicon"
+				                       ng-click="preencherFormGeracaoLancamentos({{conta.id}}, '{{conta.descricao}}')">
+				    </ion-option-button>					    		
+		      </ion-item>
+	     </ion-list>
+	 </ion-content>	 	
+</ion-view>

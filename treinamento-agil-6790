@@ -1,0 +1,137 @@
+Bugs Zoombie:
+ --> testes manuais
+ --> testes automatizados;
+
+Código ruim
+- refactoring
+- padrão de codificação
+- revisão de código
+- ferramentas de análise (sonar)
+- treinamentos
+
+Merge/Integração
+- ferramentas
+- integração contínua
+
+* "Na minha máquina funciona"
+- ambientes
+- Pesquisar sobre o "Docker"
+
+* "Só fulano sabe"
+- compartilhar
+- pair programming
+- documentação
+
+Controle de Versão:
+- CVS
+- SVN
+- Git (criado pelo criador do Linux)
+- Source safe
+- Clear Case
+- Mercurial
+- Bazzar
+- Team Source ...
+--> SVNtoGit --> migra os projetos do SVN para o GIT
+
+O comando git commit -am "" (o -a é semelhante ao add)
+*obs: limitação do (-a). Somente para arquivos já registrados.Para os novos arquivos, tem-se que usar o (add .) novamente.
+
+git clone URL ==> clona um repositório
+git log ==> show history das alterações já comitadas
+git pull = trazer os commits do servidor para o ambiente local
+git push = commit das alterações locais
+
+git status = mostra o que tem no repositório local e compara com o repositório remoto.
+git status -s ==> mostra a situação e o arquivo modificado.
+
+Criar um repositório local e inicializa um repositório no git
+git init
+(adicionar um repositório remoto)
+git remote add <apelido> <url>
+git push <apelido> <nome_branch> (master é como a trunk do SVN).
+git pull <apelido> <nome_branch>
+
+Ao fazer um clone de um servidor remoto, ele coloca o nome como "origin"
+
+git remote (mostra o nome do repositório remoto)
+git remote -v (mostra o nome e o endereço de todos os repositórios remotos)
+
+Ao fazer o clone do repositório, o ideal é fazer com ssh para usar key e não precisar de usuário e senha.
+
+git branch (lista as branches do projeto)
+
+git checkout -b <nome_branch>  (cria a branch e já troca os fontes para essa branch)
+Ex: git checkout -b bugs
+
+todo commit no git tem um commit pai
+
+commit 1 << commit 2 << commit 3
+
+uma branch aponta para um commit na branch master
+
+exemplo:
+
+                                                       master
+commit 1 <<< commit 2 <<< commit 3  << commit 7 << commit 8
+                                     bugs
+                                 3 << 4 << 5 << 6
+
+para fazer merge:
+
+git checkout master
+git merge bugs
+(Em caso de conflito, o mesmo deve ser arrumado manualmente). Depois, 
+git add .
+
+apagar branch
+git branch -D <nome_branch>
+
+Esses arquivos de branches ficam na pasta oculta (.git--> branches). O arquivo da branch tem o ponteiro que aponta para o commit.
+
+Outro exemplo de geração de branch e merge (rebase):
+
+
+(desenhar o mesmo exemplo)
+
+git checkout master
+git rebase bugs
+
+--> git rebase bugs --continue
+Em caso de conflito.
+
+Como funciona o rebase: Nesse caso ele faz um merge commit por commit da branch. Guarda as alterações da master para fazer depois dos commits da branch. Em caso de algum conflito, ele mostra o commit que deu erro. Ao final, o sistema aponta para o commit 8
+
+1 << 2 << 3
+           <<(bugs) 4 << 5 << 6 << (alterações da master) 7 << 8 <---- master.
+
+O rebase deve ser feito nos repositórios locais.
+
+Solução para evitar o único que sabe tudo.
+
+Pair Programming
+Vantagens
+------------------------------------
+- compartilhamento de conhecimento
+- qualidade
+- diminui bugs
+- produtividade ????
+- foco
+
+Desvantagens
+-----------------------------------
+- perda de foco
+- privacidade
+- cansativo
+- 
+
+
+
+
+
+
+
+
+
+
+
+

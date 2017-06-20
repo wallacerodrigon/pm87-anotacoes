@@ -1,0 +1,30 @@
+ <ion-modal-view>
+  		<ion-header-bar>
+		<button  ng-click="fecharFormHistorico()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
+    			<h1 class="title">Historico de uso</h1>
+  		</ion-header-bar>
+
+
+  		<ion-content>
+  			<ion-list>
+		      <ion-item ng-repeat="historico in listaUsos">
+		    		<div class="col col-100">
+						{{historico.descricao}} 
+					</div>
+		    		<div class="col col-50">
+						{{historico.data|date:'dd/MM/yyyy'}} 
+					</div>
+		    		<div class="col col-50">
+						{{historico.valor|currency:'R$'}} 
+					</div>
+
+
+		      </ion-item>
+
+  			</ion-list>
+
+  		</ion-content>
+		<ion-footer-bar class="bar-stable">
+			<button class="button button-full button-stable" ng-click="fecharFormHistorico()">Fechar</button>
+		</ion-footer-bar>
+</ion-modal-view>

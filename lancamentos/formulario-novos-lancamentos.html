@@ -1,0 +1,31 @@
+ <ion-modal-view>
+  		<ion-header-bar>
+		<button  ng-click="closeModal()" class="button icon-left ion-chevron-left button-clear button-stable"></button>
+    			<h1 class="title">Gera&ccedil;&atilde;o de lan&ccedil;amentos</h1>
+  		</ion-header-bar>
+  		<ion-content>
+    			<div class="list">
+			<label class="item item-input item-stacked-label">
+					<span class="input-label">Descri&ccedil;&atilde;o</span>
+  					<input type="text" placeholder="Descricao" ng-model="geracaoLancamentos.descricao">
+			</label>
+			<label class="item item-input item-stacked-label">
+					<span class="input-label">Quantidade</span>
+  					<input type="number" placeholder="Quantidade" ng-model="geracaoLancamentos.quantidade">
+			</label>
+			<label class="item item-input item-stacked-label">
+					<span class="input-label">Valor de cada lan&ccedil;amento</span>
+  					<input type="number" placeholder="Valor" ng-model="geracaoLancamentos.valor">
+			</label>
+			<label class="item item-input item-stacked-label">
+					<span class="input-label">Vencimento inicial</span>
+  					<input type="date" ng-model="geracaoLancamentos.dataInicial">	
+			</label>
+
+			<button class="button button-full button-stable" ng-click="gerarLancamentos()">
+    					Gerar
+  				</button>
+		</div>
+
+  		</ion-content>
+</ion-modal-view>

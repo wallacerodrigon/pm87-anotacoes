@@ -1,0 +1,27 @@
+ <ion-modal-view>
+  		<ion-header-bar>
+		<button  ng-click="fecharFormUso()" class="button icon-left ion-chevron-left button-clear button-dark"></button>
+    			<h1 class="title">Utiliza&ccedil;&atilde;o de lan&ccedil;amentos</h1>
+  		</ion-header-bar>
+  		<ion-content>
+    		<div class="list">
+				<label class="item item-input item-stacked-label">
+						<span class="input-label">Descri&ccedil;&atilde;o</span>
+	  					<input type="text" placeholder="Descricao" ng-model="lancamentoSelecionado.descricao" disabled="true">
+				</label>
+				<label class="item item-input item-stacked-label">
+						<span class="input-label">Vencimento</span>
+	  					<input type="date"  ng-model="lancamentoSelecionado.dataVencimento">	
+				</label>
+				<label class="item item-input item-stacked-label">
+						<span class="input-label">Valor</span>
+	  					<input type="number" placeholder="Valor" ng-model="lancamentoSelecionado.valorVencimento">
+				</label>
+	
+			</div>
+  		</ion-content>
+		<ion-footer-bar class="bar-stable">
+			<button class="button button-full button-stable" ng-click="utilizarLancamento()">Processar</button>
+  		</ion-footer>
+
+</ion-modal-view>

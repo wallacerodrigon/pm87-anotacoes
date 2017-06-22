@@ -122,13 +122,125 @@ Desvantagens
 - perda de foco
 - privacidade
 - cansativo
-- 
 
 
+JUNIT - exemplos e teste de validação de salário de reajuste > 30%
+
+Passos comuns de todos os testes:
+//ENTRADAS
+
+//PROCESSAMENTO
+
+//VALIDAÇÃO DAS SAÍDAS
 
 
+Testes automatizados
+--------------------
+Vantagens			Desvantagens
+- Feedback rápido;		- difícil;
+- Regressão;			- demorado
+- Segurança;			- código para manter;
+- Documentação;			-
+- Corretude;			-	
+
+O que testar? Algoritmos completos e códigos que tendem a mudar muito.
+
+Tipos de testes:
+--> unidade (junit)
+--> integração (mocks, daos)
+--> aceitação (selenium)
+
+O ideal é fazer mais testes de unidade para reduzir os de integração e de aceitação.
+
+Qualidade de código
+
+* Refactoring
+- Rename
+- design pattern
+- extract: constant, class, method.
+
+--> Verificar se a apostila está disponível em:http://alura.caelum.com.br/
 
 
+bit.ly/pm87-refactoring-motivacao
+
+bit.ly/pm87-refactoring exemplo com strategy
+
+Exemplo de uso do strategy:
+
+public enum TipoDeEspetaculo {
+	
+	CINEMA(new CalculadorDePrecoCinema()), 
+	SHOW(new CalculadorDePrecoShow()), 
+	TEATRO(new CalculadorDePrecoTeatro()),
+	BALLET(new CalculadorDePrecoBallet()),
+	ORQUESTRA(new CalculadorDePrecoOrquestra());
+	
+	private final CalculadorDePreco calculadorDePreco;
+	
+	private TipoDeEspetaculo(CalculadorDePreco calculadorDePreco) {
+		this.calculadorDePreco = calculadorDePreco;
+	}
+	
+	public CalculadorDePreco getCalculadorDePreco() {
+		return this.calculadorDePreco;
+	}
+	
+}
+
+
+uso: 
+public class CalculadoraDePrecos {
+
+	public BigDecimal calcula(Sessao sessao, Integer quantidade) {
+		CalculadorDePreco calculador = sessao.getEspetaculo().getTipo().getCalculadorDePreco();
+		BigDecimal precoUnitario = calculador.calcula(sessao);
+		
+		return precoUnitario.multiply(BigDecimal.valueOf(quantidade));
+	}
+
+}
+
+Interface:
+
+public interface CalculadorDePreco {
+	
+	public BigDecimal calcula(Sessao sessao);
+
+}
+
+exemplo de classe concreta:
+
+public class CalculadorDePrecoBallet implements CalculadorDePreco {
+
+	@Override
+	public BigDecimal calcula(Sessao sessao) {
+		BigDecimal preco = BigDecimal.ZERO;
+		if((sessao.getTotalIngressos() - sessao.getIngressosReservados()) / sessao.getTotalIngressos().doubleValue() <= 0.50) { 
+			preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
+		} else {
+			preco = sessao.getPreco();
+		}
+		
+		if(sessao.getDuracaoEmMinutos() > 60){
+			preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
+		}
+		
+		return preco;
+	}
+
+}
+
+
+TDD
+
+- evita a preguiça de escrever os testes;
+- evita o teste viciado;
+- foco;
+- código mais simples.
+
+Livros: TDD NO MUNDO REAL (Mauricio Aniche)
+        TDD BY EXAMPLE (Kent Beck)
 
 
 

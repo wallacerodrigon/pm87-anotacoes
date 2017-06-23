@@ -257,3 +257,21 @@ Para o nosso exemplo, instalar os plugins:
 ant plugin
 git plugin
 
+Plugins inúteis:
+green balls
+chuck norris plugin
+
+Plugins úteis:
+radiator view plugin
+
+TDD
+Início
+PROBLEMA
+	-> cenários
+	-> história de usuário
+		-> critérios de aceitação
+
+Exemplo de uso do Selenium (ver testes EstabelecimentosPage e EstabelecimentosTest).
+
+
+

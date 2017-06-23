@@ -264,3 +264,18 @@ chuck norris plugin
 Plugins úteis:
 radiator view plugin
 
+TDD
+Início
+PROBLEMA
+	-> cenários
+	-> história de usuário
+		-> critérios de aceitação
+
+Exemplo de uso do Selenium (ver testes EstabelecimentosPage e EstabelecimentosTest).
+
+Uma boa prática é utilizar uma classe com prefixo para ser referenciada na classe referente a essa página.
+
+Essa página é chamada de PageObject.
+
+
+
